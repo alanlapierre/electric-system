@@ -8,11 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class DeviceTest {
 
     private static Device device;
+    private static Integer consumption;
 
     @BeforeAll
     public static void beforeAllTests() {
-        device = new Device();
-
+        //Creating a Device.
+        consumption = 30;
+        device = new Device(consumption);
     }
 
     //CP1: Cuando indicamos que un dispositivo se enciende, el dispositivo debe quedar encendido.
@@ -33,6 +35,19 @@ class DeviceTest {
 
         //Then
         assertFalse(device.getTurnedOn());
+    }
+
+    //CP3: Cuando creamos un dispositivo con determinado consumo, el consumo debe ser establecido en forma correcta.
+    @Test
+    public void Given_A_Device_Created_With_A_Consumption_When_GetConsumption_Method_Is_Called_Then_Return_Consumption() {
+        //Given
+        Integer expectedConsumption = this.consumption;
+
+        //When
+        Integer result =device.getConsumption();
+
+        //Then
+        assertEquals(expectedConsumption,result);
     }
 
 }

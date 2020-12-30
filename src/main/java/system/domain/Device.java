@@ -3,6 +3,12 @@ package system.domain;
 public class Device {
 
     private Boolean isTurnedOn;
+    private Integer consumption;
+
+    public Device(Integer consumption) {
+        this.consumption = consumption;
+    }
+
 
     public void turnOn() {
         this.isTurnedOn = true;
@@ -14,5 +20,9 @@ public class Device {
 
     public Boolean getTurnedOn() {
         return isTurnedOn;
+    }
+
+    public Integer getConsumption() {
+        return consumption;
     }
 }
