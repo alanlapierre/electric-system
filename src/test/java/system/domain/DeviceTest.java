@@ -14,7 +14,7 @@ class DeviceTest {
     public static void beforeAllTests() {
         //Creating a Device.
         consumption = 30;
-        device = new Device(consumption);
+        device = new Device("TV1", consumption);
     }
 
     //CP1: Cuando indicamos que un dispositivo se enciende, el dispositivo debe quedar encendido.

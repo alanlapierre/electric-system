@@ -1,5 +1,7 @@
 package system.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +15,8 @@ public class ElectricSystem {
     }
 
     public void addDevice(Device device) {
+
+        System.out.println("Añadiendo : " + device);
         devices.add(device);
     }
 
@@ -23,7 +27,7 @@ public class ElectricSystem {
     public Integer getCurrentConsumption() {
         Integer currentConsumption = 0;
 
-        for (Device device: devices) {
+        for (Device device: this.getDevices()) {
             currentConsumption += device.getCurrentConsumption();
         }
 
@@ -32,5 +36,16 @@ public class ElectricSystem {
 
     public Boolean isStable() {
         return this.getCurrentConsumption() <= this.maximumPowerAllowed;
+    }
+
+    public Collection<Device> getDevices() {
+        return new ArrayList<>(devices);
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricSystem{" +
+                "devices=" + devices +
+                '}';
     }
 }

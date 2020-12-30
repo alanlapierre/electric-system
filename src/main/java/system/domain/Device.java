@@ -4,9 +4,13 @@ public class Device {
 
     private Boolean isTurnedOn;
     private Integer consumption;
+    private String name;
 
-    public Device(Integer consumption) {
+
+    public Device(String name, Integer consumption) {
+
         this.consumption = consumption;
+        this.name = name;
     }
 
 
@@ -32,4 +36,14 @@ public class Device {
         }
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Device{" +
+                "isTurnedOn=" + isTurnedOn +
+                ", consumption=" + consumption +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
 }
