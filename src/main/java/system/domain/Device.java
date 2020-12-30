@@ -25,4 +25,11 @@ public class Device {
     public Integer getConsumption() {
         return consumption;
     }
+
+    public Integer getCurrentConsumption() {
+        if(this.getTurnedOn()) {
+            return this.getConsumption();
+        }
+        return 0;
+    }
 }

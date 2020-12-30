@@ -50,4 +50,32 @@ class DeviceTest {
         assertEquals(expectedConsumption,result);
     }
 
+    //CP4: Cuando tenemos un dispositivo encendido, el consumo actual debe ser el consumo con el cual fue creado dicho dispositivo.
+    @Test
+    public void Given_A_TurnedOn_Device_When_GetCurrentConsumption_Method_Is_Called_Then_Return_Consumption(){
+        //Given
+        Integer expectedCurrentConsumption = this.consumption;
+        device.turnOn();
+
+        //When
+        Integer result = device.getCurrentConsumption();
+
+        //Then
+        assertEquals(expectedCurrentConsumption,result);
+    }
+
+
+    //CP5: Cuando tenemos un dispositivo apagado, el consumo actual debe ser cero.
+    @Test
+    public void Given_A_TurnedOff_Device_When_GetCurrentConsumption_Method_Is_Called_Then_Return_Zero(){
+        //Given
+        Integer expectedCurrentConsumption = 0;
+        device.turnOff();
+
+        //When
+        Integer result = device.getCurrentConsumption();
+
+        //Then
+        assertEquals(expectedCurrentConsumption,result);
+    }
 }

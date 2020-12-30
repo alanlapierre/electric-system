@@ -17,4 +17,14 @@ public class ElectricSystem {
     public Integer numberOfDevices() {
         return devices.size();
     }
+
+    public Integer getCurrentConsumption() {
+        Integer currentConsumption = 0;
+
+        for (Device device: devices) {
+            currentConsumption += device.getCurrentConsumption();
+        }
+
+        return currentConsumption;
+    }
 }
