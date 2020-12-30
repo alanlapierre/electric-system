@@ -19,6 +19,9 @@ class ElectricSystemTest {
    private static Device turnedOffDevice;
    private static Integer turnedOffDeviceConsumption;
 
+   private static Integer maximumPowerAllowedStable;
+   private static Integer maximunPowerAllowedNotStable;
+
     @BeforeAll
     public static void beforeAllTests() {
 
@@ -33,6 +36,9 @@ class ElectricSystemTest {
         turnedOffDeviceConsumption = 0;
         turnedOffDevice = Mockito.mock(Device.class);
         when(turnedOffDevice.getCurrentConsumption()).thenReturn(turnedOffDeviceConsumption);
+
+        maximumPowerAllowedStable = turnedOnDevice1Consumption + turnedOnDevice2Consumption;
+        maximunPowerAllowedNotStable = Math.min(turnedOnDevice1Consumption, turnedOnDevice2Consumption) - 1;
     }
 
 
@@ -40,7 +46,7 @@ class ElectricSystemTest {
     @Test
     public void Given_A_ElectricSystem_With_One_Device_When_NumberOfDevices_Method_Is_Called_Then_Return_One() {
         //Given
-        ElectricSystem electricSystem = new ElectricSystem();
+        ElectricSystem electricSystem = new ElectricSystem(maximumPowerAllowedStable);
         electricSystem.addDevice(turnedOffDevice);
 
         //Then
@@ -52,7 +58,7 @@ class ElectricSystemTest {
     @Test
     public void Given_A_ElectricalSystem_With_One_Device_TurnedOn_When_GetCurrentConsumption_Method_Is_Called_Then_Return_30() {
         //Given
-        ElectricSystem electricSystem = new ElectricSystem();
+        ElectricSystem electricSystem = new ElectricSystem(maximumPowerAllowedStable);
         electricSystem.addDevice(turnedOnDevice1);
         Integer expectedConsumption = turnedOnDevice1Consumption;
 
@@ -68,7 +74,7 @@ class ElectricSystemTest {
     @Test
     public void Given_A_ElectricalSystem_With_Two_Devices_TurnedOn_When_GetCurrentConsumption_Method_Is_Called_Then_Return_80() {
         //Given
-        ElectricSystem electricSystem = new ElectricSystem();
+        ElectricSystem electricSystem = new ElectricSystem(maximumPowerAllowedStable);
         electricSystem.addDevice(turnedOnDevice1);
         electricSystem.addDevice(turnedOnDevice2);
         Integer expectedConsumption = turnedOnDevice1Consumption + turnedOnDevice2Consumption;
@@ -86,7 +92,7 @@ class ElectricSystemTest {
     @Test
     public void Given_A_ElectricalSystem_With_One_Device_TurnedOn_And_One_Device_TurnedOff_When_GetCurrentConsumption_Method_Is_Called_Then_Return_30() {
         //Given
-        ElectricSystem electricSystem = new ElectricSystem();
+        ElectricSystem electricSystem = new ElectricSystem(maximumPowerAllowedStable);
         electricSystem.addDevice(turnedOnDevice1);
         electricSystem.addDevice(turnedOffDevice);
         Integer expectedConsumption = turnedOnDevice1Consumption;
@@ -96,6 +102,41 @@ class ElectricSystemTest {
 
         //Then
         assertEquals(expectedConsumption, result);
+    }
+
+    //CP5: Si tenemos una red con un dispositivo, pero no pasamos el limite maximo de consumo de dicha red esta debería
+    // ser estable.
+    @Test
+    public void Given_A_ElectricalSystem_With_Two_Devices_TurnedOn_When_IsStable_Method_Is_Called_Then_Return_True(){
+
+        //Given
+        ElectricSystem electricSystem = new ElectricSystem(maximumPowerAllowedStable);
+        electricSystem.addDevice(turnedOnDevice1);
+        electricSystem.addDevice(turnedOnDevice2);
+
+        //When
+        Boolean result = electricSystem.isStable();
+
+        //Then
+        assertTrue(result);
+
+    }
+
+    //CP6: Si tenemos una red con dos dispositivo, y pasamos el limite maximo de consumo de dicha red esta no debería
+    // ser estable.
+    @Test
+    public void Given_A_ElectricalSystem_With_Two_Devices_TurnedOn_When_IsStable_Method_Is_Called_Then_Return_False(){
+
+        //Given
+        ElectricSystem electricSystem = new ElectricSystem(maximunPowerAllowedNotStable);
+        electricSystem.addDevice(turnedOnDevice1);
+        electricSystem.addDevice(turnedOnDevice2);
+
+        //When
+        Boolean result = electricSystem.isStable();
+
+        //Then
+        assertFalse(result);
     }
 
 }

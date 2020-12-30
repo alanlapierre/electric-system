@@ -13,7 +13,7 @@ public class Main {
         Device tv2 = new Device(50);
         tv2.turnOff();
 
-        ElectricSystem electricSystem = new ElectricSystem();
+        ElectricSystem electricSystem = new ElectricSystem(30);
         electricSystem.addDevice(tv1);
         electricSystem.addDevice(tv2);
 
@@ -22,6 +22,7 @@ public class Main {
 
         System.out.println("Cantidad de equipos conectados a la red: " + electricSystem.numberOfDevices());
         System.out.println("Consumo actual de la red: " + electricSystem.getCurrentConsumption());
+        System.out.println("Se encuentra estable la red ? : " + electricSystem.isStable());
 
     }
 }

@@ -5,9 +5,11 @@ import java.util.Set;
 
 public class ElectricSystem {
     private Set<Device> devices;
+    private Integer maximumPowerAllowed;
 
-    public ElectricSystem() {
+    public ElectricSystem(Integer maximumPowerAllowed) {
         devices = new HashSet<>();
+        this.maximumPowerAllowed = maximumPowerAllowed;
     }
 
     public void addDevice(Device device) {
@@ -26,5 +28,9 @@ public class ElectricSystem {
         }
 
         return currentConsumption;
+    }
+
+    public Boolean isStable() {
+        return this.getCurrentConsumption() <= this.maximumPowerAllowed;
     }
 }
