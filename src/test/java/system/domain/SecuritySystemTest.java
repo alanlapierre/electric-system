@@ -3,6 +3,8 @@ package system.domain;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import system.domain.securitysystem.BasicSecuritySystem;
+import system.domain.securitysystem.SecuritySystem;
 
 import java.util.Arrays;
 
@@ -26,7 +28,7 @@ class SecuritySystemTest {
         electricSystem = Mockito.mock(ElectricSystem.class);
         when(electricSystem.getDevices()).thenReturn(Arrays.asList(device1, device2));
 
-        securitySystem = new SecuritySystem(electricSystem);
+        securitySystem = new BasicSecuritySystem(electricSystem);
 
     }
 

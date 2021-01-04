@@ -1,8 +1,13 @@
-package system.domain;
+package system.domain.securitysystem;
 
-public class SecuritySystem {
+import system.domain.Device;
+import system.domain.ElectricSystem;
 
-    private ElectricSystem electricSystem;
+import java.util.Collection;
+
+public abstract class SecuritySystem {
+
+    protected ElectricSystem electricSystem;
 
     public SecuritySystem(ElectricSystem electricSystem) {
         this.electricSystem = electricSystem;
@@ -11,7 +16,7 @@ public class SecuritySystem {
     public Boolean perform() {
         System.out.println("Empezando actuación Sistema Seguridad");
 
-        for (Device device: electricSystem.getDevices()) {
+        for (Device device: this.getDevices()) {
             if(electricSystem.isStable()){
                 System.out.println("Equilibrio alcanzado: Salimos");
                 break;
@@ -21,4 +26,6 @@ public class SecuritySystem {
         }
         return electricSystem.isStable();
     }
+
+    protected abstract Collection<Device> getDevices();
 }
