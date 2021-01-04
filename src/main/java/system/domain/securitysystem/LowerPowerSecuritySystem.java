@@ -1,6 +1,6 @@
 package system.domain.securitysystem;
 
-import system.domain.Device;
+import system.domain.device.Device;
 import system.domain.ElectricSystem;
 
 import java.util.*;

@@ -3,6 +3,7 @@ package system.domain;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import system.domain.device.Device;
 import system.domain.securitysystem.BasicSecuritySystem;
 import system.domain.securitysystem.SecuritySystem;
 

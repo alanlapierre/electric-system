@@ -2,6 +2,7 @@ package system.domain;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import system.domain.device.Device;
 
 import static org.junit.jupiter.api.Assertions.*;
 

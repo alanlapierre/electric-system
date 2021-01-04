@@ -1,7 +1,7 @@
 package system.main;
 
-import system.domain.securitysystem.BasicSecuritySystem;
-import system.domain.Device;
+import system.domain.device.CriticalDevice;
+import system.domain.device.Device;
 import system.domain.ElectricSystem;
 import system.domain.securitysystem.LowerPowerSecuritySystem;
 import system.domain.securitysystem.SecuritySystem;
@@ -13,7 +13,7 @@ public class Main {
         Device tv1 = new Device("TV1", 35);
         tv1.turnOn();
 
-        Device tv2 = new Device("TV2", 30);
+        Device tv2 = new CriticalDevice("TV2", 30);
         tv2.turnOn();
 
         ElectricSystem electricSystem = new ElectricSystem(40);

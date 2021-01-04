@@ -1,5 +1,7 @@
 package system.domain;
 
+import system.domain.device.Device;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;

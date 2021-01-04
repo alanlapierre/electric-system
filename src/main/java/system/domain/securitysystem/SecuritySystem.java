@@ -1,6 +1,7 @@
 package system.domain.securitysystem;
 
-import system.domain.Device;
+import system.domain.device.CriticalDevice;
+import system.domain.device.Device;
 import system.domain.ElectricSystem;
 
 import java.util.Collection;
@@ -21,8 +22,7 @@ public abstract class SecuritySystem {
                 System.out.println("Equilibrio alcanzado: Salimos");
                 break;
             }
-            System.out.println("Apagamos : " + device);
-            device.turnOff();
+            device.turnOffRequest();
         }
         return electricSystem.isStable();
     }

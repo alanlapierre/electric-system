@@ -1,4 +1,4 @@
-package system.domain;
+package system.domain.device;
 
 public class Device {
 
@@ -44,6 +44,12 @@ public class Device {
                 ", consumption=" + consumption +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+
+    public void turnOffRequest() {
+        System.out.println("Aceptamos Petición de Apagado para Dispositivo : " + this.toString());
+        this.turnOff();
     }
 
 }

@@ -3,6 +3,7 @@ package system.domain;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
+import system.domain.device.Device;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
