@@ -1,5 +1,6 @@
-package system.domain.securitysystem;
+package system.domain.security;
 
+import system.domain.alarm.Alarm;
 import system.domain.device.Device;
 import system.domain.ElectricSystem;
 
@@ -7,8 +8,8 @@ import java.util.*;
 
 public class LowerPowerSecuritySystem extends SecuritySystem {
 
-    public LowerPowerSecuritySystem(ElectricSystem electricSystem) {
-        super(electricSystem);
+    public LowerPowerSecuritySystem(ElectricSystem electricSystem, Alarm alarm) {
+       super(electricSystem, alarm);
     }
 
     @Override

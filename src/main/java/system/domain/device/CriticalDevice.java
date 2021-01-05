@@ -9,6 +9,5 @@ public class CriticalDevice extends Device {
     @Override
     public void turnOffRequest() {
         System.out.println("Ignoramos Petición de Apagado para Dispositivo Critico : " + this.toString());
-        this.turnOff();
     }
 }

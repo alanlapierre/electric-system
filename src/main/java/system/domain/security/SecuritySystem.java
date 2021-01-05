@@ -1,6 +1,6 @@
-package system.domain.securitysystem;
+package system.domain.security;
 
-import system.domain.device.CriticalDevice;
+import system.domain.alarm.Alarm;
 import system.domain.device.Device;
 import system.domain.ElectricSystem;
 
@@ -9,9 +9,12 @@ import java.util.Collection;
 public abstract class SecuritySystem {
 
     protected ElectricSystem electricSystem;
+    private Alarm alarm;
 
-    public SecuritySystem(ElectricSystem electricSystem) {
+    public SecuritySystem(ElectricSystem electricSystem, Alarm alarm) {
+
         this.electricSystem = electricSystem;
+        this.alarm = alarm;
     }
 
     public Boolean perform() {
@@ -24,7 +27,14 @@ public abstract class SecuritySystem {
             }
             device.turnOffRequest();
         }
-        return electricSystem.isStable();
+
+        boolean isEstable = electricSystem.isStable();
+
+        if(!isEstable) {
+            alarm.activate();
+            return false;
+        }
+        return true;
     }
 
     protected abstract Collection<Device> getDevices();
