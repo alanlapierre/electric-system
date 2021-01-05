@@ -2,6 +2,7 @@ package system.main;
 
 import system.domain.alarm.SoundAlarm;
 import system.domain.device.CriticalDevice;
+import system.domain.device.CriticalDeviceMinimumConsumption;
 import system.domain.device.Device;
 import system.domain.ElectricSystem;
 import system.domain.security.LowerPowerSecuritySystem;
@@ -14,7 +15,7 @@ public class Main {
         Device tv1 = new CriticalDevice("TV1", 35);
         tv1.turnOn();
 
-        Device tv2 = new CriticalDevice("TV2", 30);
+        Device tv2 = new CriticalDeviceMinimumConsumption("TV2", 30, 3);
         tv2.turnOn();
 
         ElectricSystem electricSystem = new ElectricSystem(40);

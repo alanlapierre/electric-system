@@ -40,7 +40,7 @@ public class Device {
     @Override
     public String toString() {
         return "Device{" +
-                "isTurnedOn=" + isTurnedOn +
+                "isTurnedOn=" + getTurnedOn() +
                 ", consumption=" + consumption +
                 ", name='" + name + '\'' +
                 '}';
