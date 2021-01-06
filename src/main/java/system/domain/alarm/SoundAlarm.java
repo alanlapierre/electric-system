@@ -3,7 +3,8 @@ package system.domain.alarm;
 public class SoundAlarm implements Alarm{
     @Override
     public void activate() {
-        //Simulamos accion de una alarma sonora. Puede haber otros tipos de alarmas en el sistema.
+        //Simulamos acción de una alarma sonora. Es solo para fines del ejercicio de modelado.
+        //Para una versión real se debería tener otras consideraciones.
         System.out.println("buuuu buuu buuuu buuuuu");
     }
 }

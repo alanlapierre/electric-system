@@ -1,8 +1,7 @@
-package system.domain;
+package system.domain.device;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import system.domain.device.Device;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -78,5 +77,18 @@ class DeviceTest {
 
         //Then
         assertEquals(expectedCurrentConsumption,result);
+    }
+
+    //CP6: Cuando enviamos una petición de apagado, el dispositivo debe apagarse.
+    @Test
+    public void Given_A_TurnedOn_Device_When_TurnOffRequest_Method_Is_Called_Then_The_Device_Is_TurnOff(){
+        //Given
+        device.turnOn();
+
+        //When
+        device.turnOffRequest();
+
+        //Then
+        assertFalse(device.getTurnedOn());
     }
 }

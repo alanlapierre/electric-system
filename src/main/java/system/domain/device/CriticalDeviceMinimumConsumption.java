@@ -24,13 +24,13 @@ public class CriticalDeviceMinimumConsumption extends CriticalDevice{
     }
 
     @Override
-    public Boolean getTurnedOn() {
-        return this.currentConsumption > 0;
+    public void turnOn() {
+        this.currentConsumption = getConsumption();
     }
 
     @Override
-    public void turnOn() {
-        this.currentConsumption = getConsumption();
+    public Boolean getTurnedOn() {
+        return this.currentConsumption > 0;
     }
 
     @Override

@@ -13,7 +13,6 @@ public class Device {
         this.name = name;
     }
 
-
     public void turnOn() {
         this.isTurnedOn = true;
     }

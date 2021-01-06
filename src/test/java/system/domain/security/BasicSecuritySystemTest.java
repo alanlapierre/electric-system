@@ -1,19 +1,18 @@
-package system.domain;
+package system.domain.security;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import system.domain.ElectricSystem;
 import system.domain.alarm.SoundAlarm;
 import system.domain.device.Device;
-import system.domain.security.BasicSecuritySystem;
-import system.domain.security.SecuritySystem;
 
 import java.util.Arrays;
 
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.when;
 
-class SecuritySystemTest {
+class BasicSecuritySystemTest {
 
     private static Device device1;
     private static Device device2;
